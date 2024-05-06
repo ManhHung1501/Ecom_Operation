@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <style type="text/css">
+        body {
+            margin: 0 !important;
+            padding: 0 !important;
+            font-family: sans-serif
+        }
+
+        h1 {
+            font-size: 18px;
+            margin: 0;
+            font-family: sans-serif;
+        }
+
+    </style>
+
+<body style="padding:10px 10px 10px 10px">
+
+    <center>
+        <table style="width:100%;max-width:600px" width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+            <tbody>
+                <tr>
+                    <td style="padding:0px 0px 0px 0px;color:#000000;text-align:left" width="100%" bgcolor="#FFFFFF" align="left">
+                        <table style="table-layout:fixed" width="100%" cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td valign="top" height="100%">
+                                        <table style="margin-bottom:30px" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                            <tbody>
+                                                <tr>
+                                                    <td align="center">
+                                                        <img style="height:45px">
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="table-layout:fixed" width="100%" cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td valign="top" height="100%">
+                                        <div style="font-family:inherit">
+                                            <h1>Hi {{ order.customer_name }},</h1>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="table-layout:fixed" width="100%" cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td style="padding:18px 0px 18px 0px;line-height:22px;text-align:inherit" valign="top" height="100%">
+
+                                        <div style="font-family:inherit">
+                                            <span style="box-sizing:border-box;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;font-style:inherit;font-weight:inherit;font-stretch:inherit;line-height:inherit;vertical-align:baseline;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;border-top-color:initial;border-right-color:initial;border-bottom-color:initial;border-left-color:initial;color:#000000;letter-spacing:normal;text-indent:0px;text-transform:none;word-spacing:0px;background-color:rgb(255,255,255);font-size:15px;font-family:arial,helvetica,sans-serif">
+                                                We’re glad to let you know that we are processing and preparing your order for shipment.
+                                                <br>
+                                                <br>
+                                                The processing time can take several days. Unfortunately, no further changes can be made at this time.
+                                            </span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table style="table-layout:fixed" width="100%" cellspacing="0" cellpadding="0" border="0">
+    <tbody>
+        <tr>
+            <td valign="top" height="100%">
+                <div style="display:flex">
+                    <h3 style="font-size:15px;font-weight:bold;text-transform:uppercase;width:100%;font-family:sans-serif">
+                        ORDER #{{ order.order_number }}
+                    </h3>
+                </div>
+                <hr style="border-width:1px 0 0 0;border-style:solid;border-color:#dddddd">
+                <br>
+                <table width="100%" cellspacing="0" cellpadding="0" border="0" align="left">
+                    <tbody>
+                        {% for item in order["items"] %}
+                        <tr>
+                            <td style="vertical-align:middle" width="17%" align="left">
+                                <a style="display:block" href="#" target="_blank">
+                                    <img style="display:block;width:80px" alt="" src="{{ item.image_url }}" width="80" border="0">
+                                </a>
+                            </td>
+                            <td style="padding:0 20px 0 20px;vertical-align:top" width="83%" align="left">
+                                <p style="font-size:15px;line-height:26px;color:#222;font-weight:600;margin:0;font-family:sans-serif">
+                                    <a style="text-decoration:none" href="https://{{ order.domain }}" target="_blank">{{ item.product_name }}</a>
+                                </p>
+                                <p style="font-size:15px;line-height:26px;color:#555;margin:0;font-family:sans-serif">
+                                    {{ item.attributes }}</p>
+                                <p style="font-size:15px;line-height:26px;color:#222;margin:0;font-family:sans-serif">
+                                    <span>${{ item.price }}</span>
+                                    x <span>{{ item.quantity }}</span>
+                                </p>
+                            </td>
+                            <td style="font-size:15px;line-height:26px;color:#222;vertical-align:bottom;font-weight:600;font-family:sans-serif">
+                                ${{ item.total }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>
+                        <table style="table-layout:fixed" width="100%" cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td valign="top" height="100%"><br>
+                                        <hr style="border-width:1px 0 0 0;border-style:solid;border-color:#dddddd">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table style="table-layout:fixed" width="100%" cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td style="padding:18px 0px 18px 0px;line-height:22px;text-align:inherit" valign="top" height="100%">
+                                        <div>
+                                            <div style="font-family:inherit;text-align:inherit"><span style="font-size:15px">Once your order ships, we’ll follow up with your tracking information. Please note that your order may ship in multiple packages. Need help with this order? </span>
+                                            <a href="https://{{ order.domain }}/contact"><span style="font-size:15px"><u><strong>Contact support</strong></u></span></a></div>
+                                            <div></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </center>
+    <p style="font-size:11px;color:#717171"><a href="<%asm_global_unsubscribe_raw_url%>"> Unsubscribe </a></p>
+
+</body>
+
+</html>

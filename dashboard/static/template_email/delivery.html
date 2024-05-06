@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <style type="text/css">
+        body {
+            margin: 0 !important;
+            padding: 0 !important;
+            font-family: sans-serif;
+            font-size: 15px;
+
+        }
+
+        h1 {
+            font-size: 18px;
+            margin: 0;
+            font-family: sans-serif;
+        }
+        p {
+            margin:0;
+            color: #222;
+            line-height:26px;
+        }
+
+    </style>
+
+<body style="padding:10px 10px 10px 10px">
+    <center>
+        <table style="width:100%;max-width:600px" width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+            <tbody>
+                <tr>
+                    <td style="padding:0px 0px 0px 0px;color:#000000;text-align:left" width="100%" bgcolor="#FFFFFF" align="left">
+                        <table style="table-layout:fixed" width="100%" cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td valign="top" height="100%">
+                                        <table style="margin-bottom:30px" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                            <tbody>
+                                                <tr>
+                                                    <td align="center">
+                                                        <img style="height:45px">
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table style="table-layout:fixed" width="100%" cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td style="padding:18px 0px 18px 0px;line-height:22px;text-align:inherit" valign="top" height="100%">
+
+                                        <div>
+                                            <span>
+                                                Your package has arrived.
+                                            </span>
+
+                                        </div>
+                                        <div><br></div>
+                                        <div>
+                                            <span>
+                                                The wait is over! The following items have arrived at their destination on .
+                                            </span>
+                                        </div>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table style="table-layout:fixed" width="100%" cellspacing="0" cellpadding="0" border="0">
+    <tbody>
+        <tr>
+            <td valign="top" height="100%">
+                <div style="display:flex">
+                    <h3 style="font-size:15px;font-weight:bold;text-transform:uppercase;width:70%;">ORDER #{{ order.order_number }}</h3>
+                    <h3 style="font-size:15px;font-weight:bold;text-transform:uppercase;width:30%">TRACKING NUMBERS</h3>
+                </div>
+                <hr style="border-width:1px 0 0 0;border-style:solid;border-color:#dddddd">
+                <br>
+                <table width="100%" cellspacing="0" cellpadding="0" border="0" align="left">
+                    <tbody>
+                        {% for item in order["items"] %}
+                            <tr style="margin-top:100px">
+                                <td style="vertical-align:middle" width="17%" align="left">
+                                    <a style="display:block" title="" href="{{ item.image_url }}"><img style="display:block;font-family:Arial;width:80px;margin-top:5px" alt="" src="{{ item.image_url }}" width="80" border="0">
+                                    </a>
+                                </td>
+                                <td style="padding:0 20px 0 20px;vertical-align:top" width="83%" align="left">
+                                    <p style="font-size:15px;line-height:26px;font-weight:600;margin:0;">{{ item.product_name }}</p>
+                                    <p style="font-size:15px;line-height:26px;color:#555;margin:0;">{{ item.attributes }}</p>
+                                    <p style="font-size:15px;line-height:26px;margin:0;">
+                                        <span>${{ item.price }}</span>
+                                            x <span>{{ item.quantity }}</span>
+                                    </p>
+                                </td>
+                                <td>
+                                    {% for tracking in item["tracking_numbers"] %}
+                                        <div><b><a href="{{ tracking.tracking_url }}" target="_blank">{{ tracking.tracking_number }}</a></b></div>
+                                    {% endfor %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>
+                        <table style="table-layout:fixed" width="100%" cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td valign="top" height="100%"><br>
+                                        <h4 style="font-size:15px;font-weight:bold;font-family:sans-serif">Delivered to</h4>
+                                        <hr style="border-width:1px 0 0 0;border-style:solid;border-color:#dddddd">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="padding:0px 0px 0px 0px" width="100%" cellspacing="0" cellpadding="0" border="0"
+              bgcolor="#FFFFFF" align="center">
+              <tbody>
+                <tr>
+                  <td valign="top" height="100%">
+                    <table style="width:290px;border-spacing:0;border-collapse:collapse;margin:0px 10px 0px 0px"
+                      width="290" cellspacing="0" cellpadding="0" border="0" align="left">
+                      <tbody>
+                        <tr>
+                          <td style="padding:0px;margin:0px;border-spacing:0">
+                            <table style="table-layout:fixed" width="100%" cellspacing="0" cellpadding="0" border="0">
+                              <tbody>
+                                <tr>
+                                  <td valign="top" height="100%">
+                                    <h5
+                                      style="font-size:15px;font-weight:bold;text-transform:uppercase;margin:14px 0 10px;">
+                                      SHIPPING ADDRESS</h5>
+                                    <p
+                                      style="margin:0;line-height:26px;">
+                                      {{ order.customer_name }}</p>
+                                    <p
+                                      style="margin:0;line-height:26px;">
+                                      {{ order.address }} </p>
+                                    <p
+                                      style="margin:0;line-height:26px;">
+                                      {{ order.city }}, {{ order.state_code }}</p>
+                                    <p style="margin:0;line-height:26px;">
+                                      {{ order.postcode }}, {{ order.country_code }}</p>
+                                      <p style="margin:0;line-height:26px;">
+                                      {{ order.phone }}</p>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <table style="width:290px;border-spacing:0;border-collapse:collapse;"
+                      width="290" cellspacing="0" cellpadding="0" border="0" align="left">
+                      <tbody>
+                        <tr>
+                          <td style="padding:0px;margin:0px;border-spacing:0">
+                            <table style="table-layout:fixed" width="100%" cellspacing="0" cellpadding="0" border="0">
+                              <tbody>
+                                <tr>
+                                  <td valign="top" height="100%">
+                                    <h3
+                                      style="font-size:15px;font-weight:bold;text-transform:uppercase;margin:14px 0 10px;">
+                                      CONTACT INFO</h3>
+                                    <p><a href="mailto:{{ order.email }}" target="_blank">{{ order.email }}</a></p>
+                                    <p>{{ order.phone }}</p>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>                        <table style="table-layout:fixed" width="100%" cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td style="padding:18px 0px 18px 0px;line-height:22px;" valign="top" height="100%">
+                                        <div>
+                                            <div>We stand by the quality of our products. Each item comes with a 07-day quality guarantee from the time of arrival. Please remember to keep the original packaging that your order came in for returns, replacements, or exchanges. View our return policy <a href="https://{{ order.domain }}/return-policy" target="_blank">here</a>.</div>
+                                            <div><br></div>
+
+                                            <div style="margin-left:0px">
+                                                <span style="font-size:15px">Best,<br>The <a href="https://{{ order.domain }}" target="_blank">{{ order.domain }}</a> team</span>
+                                            </div>
+                                            <div></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="table-layout:fixed" width="100%" cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td style="padding:12px 0px 12px 0px;line-height:18px;text-align:inherit" valign="top" height="100%">
+                                        <div>
+                                            <div style="font-family:inherit;text-align:center"><span style="color:#000000;font-size:15px;font-style:normal;font-weight:700;letter-spacing:normal;text-align:center;text-indent:0px;text-transform:none;white-space:pre-wrap;word-spacing:0px;background-color:rgb(255,255,255);float:none;display:inline;font-family:arial,helvetica,sans-serif">Need help with this order?</span></div>
+                                            <div></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="table-layout:fixed" width="100%" cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td style="padding:0px 0px 0px 0px" align="center">
+                                        <table style="text-align:center" cellspacing="0" cellpadding="0" border="0">
+                                            <tbody>
+                                                <tr>
+                                                    <td style="border-radius:6px;font-size:16px;text-align:center;background-color:inherit" bgcolor="#5BB3E4" align="center"><a href="https://{{ order.domain }}/contact" style="background-color:#5bb3e4;border:1px solid #5bb3e4;border-color:#5bb3e4;border-radius:3px;border-width:1px;color:#ffffff;display:inline-block;font-size:14px;font-weight:normal;letter-spacing:0px;line-height:normal;padding:8px 22px 8px 22px;text-align:center;text-decoration:none;border-style:solid;" target="_blank">Contact Support</a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </center>
+    <p style="font-size:11px;color:#717171"><a href="<%asm_global_unsubscribe_raw_url%>"> Unsubscribe </a></p>
+</body>
+
+</html>

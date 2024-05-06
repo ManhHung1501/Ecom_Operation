@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <style type="text/css">
+        body {
+            margin: 0 !important;
+            padding: 0 !important;
+            font-family: sans-serif;
+            font-size: 15px;
+        }
+
+        h1 {
+            font-size: 18px;
+            margin: 0;
+            font-family: sans-serif;
+        }
+
+    </style>
+
+<body style="padding:10px 10px 10px 10px">
+
+    <center>
+        <table style="width:100%;max-width:600px" width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+            <tbody>
+                <tr>
+                    <td style="padding:0px 0px 0px 0px;color:#000000;text-align:left" width="100%" bgcolor="#FFFFFF" align="left">
+                        <table style="table-layout:fixed" width="100%" cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td valign="top" height="100%">
+                                        <table style="margin-bottom:30px" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                            <tbody>
+                                                <tr>
+                                                    <td align="center">
+                                                        <img style="height:45px">
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="table-layout:fixed" width="100%" cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td valign="top" height="100%">
+                                        <div>
+                                            <h1>Dear {{ order.customer_name }},</h1>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="table-layout:fixed" width="100%" cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td style="padding:18px 0px 18px 0px;line-height:22px;text-align:inherit" valign="top" height="100%">
+
+                                        <div>
+                                            <span>
+                                            We are pleased to inform you that your order with order number #{{ order.order_number }} has arrived at the post office and is ready for delivery. The package will be delivered to you within the next 2-3 days. Please follow this tracking link to receive the package when it arrives.
+                                            </span>
+                                        </div>
+                                        <div><br></div>
+                                            <div>
+                                                <span>
+                                                    <a href="{{ tracking.tracking_url }}" target="_blank">{{ tracking.tracking_number }}</a>
+                                                </span>
+                                            </div>
+                                        <div><br></div>
+                                        <div>
+                                            <span>
+                                                In the event that you do not receive your package within the next 2-3 business days, we advise you to contact your nearest post office to inquire about the status of your parcel and to make necessary arrangements for its retrieval.
+                                            </span>
+                                        </div>
+                                        <div><br></div>
+                                        <div>
+                                            <span>
+                                                {{ tracking.courier_code }} Website: <a href="{{ tracking.website }}" target="_blank">{{ tracking.website }}</a>  Tel：<a href="tel:{{ tracking.courier_phone }}">{{ tracking.courier_phone }}</a>
+                                            </span>
+                                        </div>
+                                        <div><br></div>
+                                        <div>
+                                            <span>
+                                                Thank you for choosing our services. We hope that you are satisfied with your purchase and that it meets your expectations. Should you have any questions or concerns, please do not hesitate to contact us.
+                                            </span>
+                                        </div>
+                                        <div><br></div>
+
+                                        <div>
+                                            <span>
+                                                Best regards,<br><a href="https://{{ order.domain }}" target="_blank">{{ order.domain }}</a> team
+                                            </span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </center>
+    <p style="font-size:11px;color:#717171"><a href="<%asm_global_unsubscribe_raw_url%>"> Unsubscribe </a></p>
+
+</body>
+
+</html>
